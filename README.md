@@ -2,8 +2,7 @@
 ReportTelegram is a telegram bot that helps you to keep the group clean by a report system with kicks and ban times.
 # hi
 
-[jjjjj
-
+<p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/MyLoveMoon/rtele"> <img src="https://img.shields.io/badge/%20%20-white?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
 
 
 ## Installing
