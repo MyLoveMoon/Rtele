@@ -7,7 +7,7 @@ from telegram.ext import Updater, CommandHandler
 
 from reportTelegram import admin
 from reportTelegram import reports
-from reportTelegram import config.py
+from reportTelegram import config
 from reportTelegram import utils
 
 config = configparser.ConfigParser()
