@@ -1,7 +1,7 @@
 {
     "name": "r tele",
     "description": "help you to ban the all memebers from the group",
-    "repository": "",
+    "repository": "https://github.com/MyLoveMoon/Rtele",
     "image": "heroku/python",
     "env": {
         "TOKEN_ID": {
