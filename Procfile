@@ -1,1 +1,1 @@
-worker: python3 -m grootxd
+worker: python3 -m reportTelegram
