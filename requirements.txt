@@ -1,2 +1,8 @@
 python-telegram-bot
 pymysql
+async-lru
+pyaes
+Tgcrypto
+pyrogram==1.4.15
+PySocks
+python-dotenv
