@@ -8,16 +8,16 @@ import pymysql
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 
 from reportTelegram import utils
-from reportTelegram import variables
+from reportTelegram import config.py
 
-admin_id = variables.admin_id
-group_id = variables.group_id
-STICKER = variables.sticker
+admin_id = config.admin_id
+group_id = config.group_id
+STICKER = config.sticker
 
-DB_HOST = variables.DB_HOST
-DB_USER = variables.DB_USER
-DB_PASS = variables.DB_PASS
-DB_NAME = variables.DB_NAME
+DB_HOST = config.DB_HOST
+DB_USER = config.DB_USER
+DB_PASS = config.DB_PASS
+DB_NAME = config.DB_NAME
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
@@ -35,13 +35,13 @@ def get_stats():
             for row in rows:
                 num_reportes = row[0]
                 name = row[1]
-                if num_reportes == variables.num_reports - 1:
+                if num_reportes == config.num_reports - 1:
                     stats += '\n*%d --> %s*' % (num_reportes, name)
                 else:
                     stats += '\n%d --> %s' % (num_reportes, name)
             m, s = divmod(variables.ban_time, 60)
             ban_time_text = '%01d:%02d' % (m, s)
-            stats += '\n\n❗️Reportes a %d con ban time de %s minutos.' % (variables.num_reports, ban_time_text)
+            stats += '\n\n❗️Reportes a %d con ban time de %s minutos.' % (config.num_reports, ban_time_text)
             return stats
     except Exception:
         logger.error('Fatal error in get_stats', exc_info=True)
@@ -107,23 +107,23 @@ def who(user_id):
 
 
 def counter(bot, name, reported, job_queue):
-    user_data = variables.user_data_dict[reported]
+    user_data = config.user_data_dict[reported]
     chat_member = bot.get_chat_member(group_id, reported)
     bot.send_message(group_id, 'A tomar por culo %s' % name)
 
     if chat_member.status == 'kicked':
         if 'ban_time' in user_data and user_data['ban_time'] > 0:
-            user_data['ban_time'] += variables.ban_time
-        bot.kick_chat_member(group_id, reported, until_date=int(chat_member.until_date.timestamp()+variables.ban_time))
+            user_data['ban_time'] += config.ban_time
+        bot.kick_chat_member(group_id, reported, until_date=int(chat_member.until_date.timestamp()+config.ban_time))
         user_data['unkick_job'].stop()
         user_data['unkick_job'] = job_queue.run_once(send_invitation, user_data['ban_time'],
                                                      context={'user_data': user_data, 'reported': reported,
                                                               'name': name})
-        m, s = divmod(variables.ban_time, 60)
+        m, s = divmod(config.ban_time, 60)
         text = 'Contador actualizado: +%02d:%02d' % (m, s)
         bot.send_message(reported, text)
         return True
-    user_data['ban_time'] = variables.ban_time
+    user_data['ban_time'] = config.ban_time
     m, s = divmod(user_data['ban_time'], 60)
     text = 'Expulsado durante: %02d:%02d' % (m, s)
     bot.kick_chat_member(group_id, reported, until_date=int(time.time()+user_data['ban_time']))
@@ -162,7 +162,7 @@ def send_invitation(bot, job):
     reported = job.context['reported']
     name = job.context['name']
     utils.clear_report_data(reported)
-    button = InlineKeyboardButton('Invitación', url=variables.link)
+    button = InlineKeyboardButton('Invitación', url=config.link)
     markup = InlineKeyboardMarkup([[button]])
     bot.send_message(reported, 'Ya puedes entrar %s, usa esta invitación:' % name, reply_markup=markup)
 
@@ -179,7 +179,7 @@ def send_report(bot, user_id, reported, job_queue):
             already_reported = bool(cur.fetchone()[0])
             if bot.get_chat_member(group_id, reported).status == 'kicked':
                 bot.send_message(group_id, 'Ensañamiento!!!')
-            elif num_reportes == variables.num_reports:  # Si no está kicked pero tiene los 5 reportes
+            elif num_reportes == config.num_reports:  # Si no está kicked pero tiene los 5 reportes
                 utils.clear_report_data(reported)
                 bot.send_message(group_id, 'Limpiados reportes a %s por caida de servidor' % name)
             elif not already_reported and user_id != reported:
@@ -212,7 +212,7 @@ def send_love(bot, user_id, loved, job_queue):
             already_reported = bool(cur.fetchone()[0])
             if bot.get_chat_member(group_id, loved).status == 'kicked':
                 bot.send_message(group_id, 'Abrazos!!!')
-            elif num_reportes == variables.num_reports:  # Si no está kicked pero tiene los 5 reportes
+            elif num_reportes == config.num_reports:  # Si no está kicked pero tiene los 5 reportes
                 utils.clear_report_data(loved)
                 bot.send_message(group_id, 'Limpiados reportes a %s por caida de servidor' % name)
             elif already_reported and user_id != loved:
