@@ -8,7 +8,7 @@ import pymysql
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 
 from reportTelegram import utils
-from reportTelegram import config.py
+from reportTelegram import config
 
 ADMIN_ID= config.admin_id
 GROUP_ID = config.group_id
