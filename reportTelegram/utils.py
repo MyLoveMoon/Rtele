@@ -2,16 +2,16 @@ import logging
 
 import pymysql
 
-from reportTelegram import variables
+from reportTelegram import config.py
 
-ADMIN_ID = variables.admin_id
-GROUP_ID = variables.group_id
+ADMIN_ID = config.admin_id
+GROUP_ID = config.group_id
 
-DB_HOST = variables.DB_HOST
-DB_USER = variables.DB_USER
-DB_PASS = variables.DB_PASS
-DB_NAME = variables.DB_NAME
-DB_PORT = variables.DB_PORT
+DB_HOST = config.DB_HOST
+DB_USER = config.DB_USER
+DB_PASS = config.DB_PASS
+DB_NAME = config.DB_NAME
+DB_PORT = config.DB_PORT
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
@@ -23,11 +23,11 @@ def create_connection():
 
 
 def filter_report(msg):
-    return is_from_group(msg.from_user.id) and msg.chat.id == variables.group_id
+    return is_from_group(msg.from_user.id) and msg.chat.id == config.group_id
 
 
 def clear_report_data(reported):
-    user_data = variables.user_data_dict[reported]
+    user_data = config.user_data_dict[reported]
     con = create_connection()
     try:
         with con.cursor() as cur:
@@ -110,7 +110,7 @@ def get_names():
 
 
 def remove_message_from_group(bot, job):
-    bot.delete_message(chat_id=variables.group_id, message_id=job.context)
+    bot.delete_message(chat_id=config.group_id, message_id=job.context)
 
 
 def create_database():
