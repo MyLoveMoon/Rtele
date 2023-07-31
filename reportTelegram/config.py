@@ -3,7 +3,6 @@ import configparser
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-LINK=int(config['treportest'])
 GROUP_ID=int(config['-1001824856185'])
 ADMIN_ID=int(config['6056591125'])
 STICKER=int(config['CAACAgEAAxkBAAEJ3K5kx0JvDnWjIIWq__9YIiTH7dWszwAC6AIAAuWAwUS8QzStENdBxy8E'])
