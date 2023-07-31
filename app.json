@@ -4,10 +4,16 @@
     "repository": "",
     "image": "heroku/python",
     "env": {
-        "TELEGRAM_TOKEN": {
+        "TOKEN_ID": {
         "description": "Get this value from @BotFather"
         },
         "GROUP_ID":{
+            "description": "Get this value from https://my.telegram.org"
+        },
+        "LINK":{
+            "description": "Get this value from https://my.telegram.org"
+        },
+        "STICKER":{
             "description": "Get this value from https://my.telegram.org"
         },
         "ADMIN_ID":{
