@@ -16,8 +16,8 @@
         "STICKER":{
             "description": "Get this value from ban sticker id"
         },
-        "TELEGRAM_ADMIN_ID":{
-            "description": "Get this value from https://my.telegram.org"
+        "ADMIN_ID":{
+            "description": "Get this value from sudo id"
         }
     },
     "formation": {
