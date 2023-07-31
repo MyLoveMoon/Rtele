@@ -1,6 +1,6 @@
 import time
 
-from reportTelegram import config.py
+from reportTelegram import config
 
 admin_id = config.admin_id
 group_id = config.group_id
