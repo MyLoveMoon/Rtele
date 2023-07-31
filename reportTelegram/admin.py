@@ -1,21 +1,21 @@
 import time
 
-from reportTelegram import variables
+from reportTelegram import config.py
 
-admin_id = variables.admin_id
-group_id = variables.group_id
+admin_id = config.admin_id
+group_id = config.group_id
 
 
 def set_ban_time(new_time):
-    variables.ban_time = int(new_time)
-    m, s = divmod(variables.ban_time, 60)
+    config.ban_time = int(new_time)
+    m, s = divmod(config.ban_time, 60)
     ban_time_text = '%01d:%02d' % (m, s)
     return 'BAN TIME A {0} MINUTOS'.format(ban_time_text)
 
 
 def set_num_reports_by_bot(new_reports):
-    variables.num_reports = new_reports
-    return 'REPORTES A {0}'.format(variables.num_reports)
+    config.num_reports = new_reports
+    return 'REPORTES A {0}'.format(config.num_reports)
 
 
 def berserker_on(bot, message):
