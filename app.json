@@ -10,9 +10,6 @@
         "GROUP_ID":{
             "description": "Get this value from your group id"
         },
-        "LINK":{
-            "description": "Get this value your gtoup link"
-        },
         "STICKER":{
             "description": "Get this value from ban sticker id"
         },
