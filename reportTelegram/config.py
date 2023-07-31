@@ -3,9 +3,10 @@ import configparser
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-GROUP_ID = getenv(-1001824856185")
-ADMIN_ID = getenv("6056591125")
-STICKER= getenv("CAACAgEAAxkBAAEJ3K5kx0JvDnWjIIWq__9YIiTH7dWszwAC6AIAAuWAwUS8QzStENdBxy8E")
+link = int(config['Telegram']['link'])
+group_id = int(config['Telegram']['group_id'])
+admin_id = int(config['Telegram']['admin_id'])
+sticker = int(config['Telegram']['sticker'])
 
 DB_HOST = config['Database']['DB_HOST']
 DB_USER = config['Database']['DB_USER']
