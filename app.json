@@ -4,19 +4,19 @@
     "repository": "",
     "image": "heroku/python",
     "env": {
-        "TOKEN_ID": {
+        "TELEGRAM_TOKEN_ID": {
         "description": "Get this value from @BotFather"
         },
-        "GROUP_ID":{
+        "TELEGRAM_GROUP_ID":{
             "description": "Get this value from https://my.telegram.org"
         },
-        "LINK":{
+        "TELEGRAM_LINK":{
             "description": "Get this value from https://my.telegram.org"
         },
-        "STICKER":{
+        "TELEGRAM_STICKER":{
             "description": "Get this value from https://my.telegram.org"
         },
-        "ADMIN_ID":{
+        "TELEGRAM_ADMIN_ID":{
             "description": "Get this value from https://my.telegram.org"
         }
     },
