@@ -10,8 +10,8 @@ from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from reportTelegram import utils
 from reportTelegram import config.py
 
-admin_id = config.admin_id
-group_id = config.group_id
+ADMIN_ID= config.admin_id
+GROUP_ID = config.group_id
 STICKER = config.sticker
 
 DB_HOST = config.DB_HOST
