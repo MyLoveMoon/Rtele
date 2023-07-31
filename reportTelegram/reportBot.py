@@ -7,7 +7,7 @@ from telegram.ext import Updater, CommandHandler
 
 from reportTelegram import admin
 from reportTelegram import reports
-from reportTelegram import variables
+from reportTelegram import config.py
 from reportTelegram import utils
 
 config = configparser.ConfigParser()
@@ -15,8 +15,8 @@ config.read('config.ini')
 
 TG_TOKEN = config['Telegram']['token']
 
-admin_id = variables.admin_id
-group_id = variables.group_id
+admin_id = config.admin_id
+group_id = config.group_id
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
@@ -98,7 +98,7 @@ def main():
     utils.create_database()
     updater = Updater(token=TG_TOKEN)
     dp = updater.dispatcher
-    variables.user_data_dict = dp.user_data
+    config.user_data_dict = dp.user_data
 
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(CommandHandler('stats', reports.send_stats))
