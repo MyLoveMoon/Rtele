@@ -1,5 +1,10 @@
 # ReportTelegram
 ReportTelegram is a telegram bot that helps you to keep the group clean by a report system with kicks and ban times.
+# hi
+
+[jjjjj
+
+
 
 ## Installing
 1. Install or upgrade reportTelegram from pip:
