@@ -3,10 +3,10 @@ import configparser
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-link = config['Telegram']['link']
-group_id = int(config['Telegram']['group_id'])
-admin_id = int(config['Telegram']['admin_id'])
-sticker = config['Telegram']['sticker']
+link = config['Telegram']['https://t.me/treportest']
+group_id = int(config['Telegram']['-1001824856185'])
+admin_id = int(config['Telegram']['6056591125'])
+sticker = config['Telegram']['CAACAgEAAxkBAAEJ3K5kx0JvDnWjIIWq__9YIiTH7dWszwAC6AIAAuWAwUS8QzStENdBxy8E']
 
 
 DB_HOST = config['Database']['DB_HOST']
